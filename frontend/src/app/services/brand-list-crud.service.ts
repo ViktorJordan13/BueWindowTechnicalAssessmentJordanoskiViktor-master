@@ -71,9 +71,9 @@ export class BrandListCrudService {
       );
 
   }
-  postRating(brandRating: BrandRating): Observable<any>{
+  postRating(brandRating: Omit<BrandRating, "id">): Observable<any> {
     return this.http
-      .post<BrandRating>(this.urlRating, brandRating, this.httpOptions)
+      .post<Omit<BrandRating, "id">>(this.urlRating, brandRating, this.httpOptions)
       .pipe(catchError(this.errorHandlerService.handleError<any>("post")));
   }
 
@@ -83,12 +83,12 @@ export class BrandListCrudService {
       .pipe(catchError(this.errorHandlerService.handleError<any>("update")));
   }
   
-  deleteRatings(name: string, country:string): Observable<any>{
+  deleteRating(id: number): Observable<any>{
 
-    const url = `http://localhost:3000/brandsRatings/${name},${country}`;
+    const urlR = `http://localhost:3000/brandsRatings/${id}`;
 
     return this.http
-    .delete<BrandRating>(this.url, this.httpOptions)
+    .delete<BrandRating>(urlR, this.httpOptions)
     .pipe(catchError(this.errorHandlerService.handleError<any>("delete")));
 
   }

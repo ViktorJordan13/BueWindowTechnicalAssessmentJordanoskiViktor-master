@@ -2,7 +2,8 @@ const db = require('../util/database')
 
 module.exports = class BrandRating{
 
-    constructor(name, country, rating ){
+    constructor(id, name, country, rating ){
+        this.id = id;
         this.name = name;
         this.country = country;
         this.rating = rating;
@@ -20,14 +21,14 @@ module.exports = class BrandRating{
         return db.execute('INSERT INTO brandsratings (name, country, rating) VALUES (?, ?, ?)', [name, country, rating]);
     }
 
-    static update(name, country, rating){
+    static update(id, name, country, rating){
 
-        return db.execute('UPDATE brandsratings SET name = ?, country = ?, rating = ? WHERE name = ? AND country = ?', [name, country, rating, name, country]);
+        return db.execute('UPDATE brandsratings SET name = ?, country = ?, rating = ? WHERE id = ?', [name, country, rating, id]);
     }
 
-    static delete(name, country){
+    static delete(id){
 
-        return db.execute('DELETE FROM brandsratings WHERE name = ? AND country = ?', [name, country]);
+        return db.execute('DELETE FROM brandsratings WHERE id = ?', [id]);
     }
 
     static sort(country){

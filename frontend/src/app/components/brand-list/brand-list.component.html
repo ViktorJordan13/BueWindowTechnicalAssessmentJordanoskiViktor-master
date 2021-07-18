@@ -113,7 +113,7 @@
       <span style="position: absolute; right: 0;">
         <button mat-icon-button>
           <mat-icon
-          (click)="updateRatings(brandRatingName.value, brandRatingCountry.value, brandRatingRating.value)"
+          (click)="updateRatings(brandRating.id, brandRatingName.value, brandRatingCountry.value, brandRatingRating.value)"
             color="primary"
           >
             edit
@@ -121,7 +121,7 @@
         </button>
         <button mat-icon-button>
           <mat-icon
-          (click)  = "deleteRatings(brandRating.name, brandRating.country)"
+          (click)  = "deleteRatings(brandRating.id)"
            color="warn">
             delete
           </mat-icon>

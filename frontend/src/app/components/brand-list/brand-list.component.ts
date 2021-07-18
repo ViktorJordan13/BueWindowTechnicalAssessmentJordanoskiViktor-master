@@ -72,6 +72,7 @@ export class BrandListComponent implements OnInit {
 
 postRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
 
+  
   const name = (<string>brandRatingName).trim();
   const country = (<string>brandRatingCountry).trim();
   const rating = (<number>brandRatingRating);
@@ -79,11 +80,11 @@ postRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType
   //console.log(name);
   //console.log(description);
   this.brandsRatings$ = this.brandListCrudService
-  .postRating({ name, country, rating})
+  .postRating({  name, country, rating})
   .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
 }
 
-updateRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
+updateRatings(id:number, brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
 
   const name = (<string>brandRatingName).trim();
   const country = (<string>brandRatingCountry).trim();
@@ -91,6 +92,7 @@ updateRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisTy
   if(!name) return;
 
   const newBrandRating: BrandRating = {
+    id,
     name,
     country,
     rating
@@ -100,10 +102,10 @@ updateRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisTy
     .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
 }
 
-deleteRatings(name: string, country:string): void{
+deleteRatings(id: number): void{
 
   this.brandsRatings$ = this.brandListCrudService
-    .deleteRatings(name, country)
+    .deleteRating(id)
     .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
 }
   

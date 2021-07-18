@@ -32,7 +32,7 @@ exports.postBrandRatings =  async (req, res, next) => {
 exports.putBrandRatings =  async (req, res, next) => {
 
     try{
-        const putResponse = await BrandRating.update(req.body.name, req.body.country, req.body.rating, req.body.name, req.body.country);
+        const putResponse = await BrandRating.update(req.body.id, req.body.name, req.body.country, req.body.rating);
         res.status(200).json(putResponse);
     
     }catch(err){
@@ -46,7 +46,7 @@ exports.putBrandRatings =  async (req, res, next) => {
 exports.deleteBrandRatings =  async (req, res, next) => {
 
     try{
-        const deleteResponse = await BrandRating.delete(req.body.name, req.body.country);
+        const deleteResponse = await BrandRating.delete(req.params.id);
         res.status(200).json(deleteResponse);
     
     }catch(err){

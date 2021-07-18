@@ -11,7 +11,7 @@ router.post('/', brandRatingController.postBrandRatings);
 
 router.put('/', brandRatingController.putBrandRatings);
 
-router.delete('/', brandRatingController.deleteBrandRatings);
+router.delete('/:id', brandRatingController.deleteBrandRatings);
 
 router1.get('/', brandRatingController.sortBrandsRatings)
 
