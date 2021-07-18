@@ -49,3 +49,5 @@ Should that be solved, therefore the extra forms for the data from the dropdown 
 Other than that, form field inputs are reactive in a way that they will not allow any insertion,editing or deletion that isn't allowed by the Technical Assesment instructions.
 
 Disclaimer: I chose this front end display of data not by any means because it looks the best or because i cannot make it look better if needs be,  only because this way it was easiest for me to test the functionalities of the application. In other words, the frontend look is by no means final, and can be changed or replaced altogether.
+
+New Pc check
