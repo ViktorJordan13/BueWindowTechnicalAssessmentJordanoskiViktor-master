@@ -148,7 +148,7 @@
   </button>
 
   <mat-form-field style="width: 100%;" >
-    <mat-label>Brand Ratings country</mat-label>
+    <mat-label>Brand Ratings by country:</mat-label>
     <mat-select [(ngModel)] = "COUNTRYCODE">
       <mat-option  *ngFor="let brandRating of brandsRatings$ | async" [value] = brandRating.country  >
         {{brandRating.country}}

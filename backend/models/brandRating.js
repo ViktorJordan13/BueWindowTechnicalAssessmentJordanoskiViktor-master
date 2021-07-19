@@ -33,7 +33,7 @@ module.exports = class BrandRating{
 
     static sort(country){
 
-        return db.execute('SELECT * FROM brandsratings WhHERE country = ? ORDER BY rating DESC', [country]);
+        return db.execute('SELECT * FROM brandsratings WHERE country = ? ORDER BY rating DESC', [country]);
         
     }
 

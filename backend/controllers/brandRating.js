@@ -62,7 +62,7 @@ exports.sortBrandsRatings = async (req, res, next) => {
     try{
         const [allBrandsRatings] = await BrandRating.sort(req.body.country);
         res.status(200).json(allBrandsRatings);
-        await BrandRating.sort();
+        
 
     }catch(err){
         if(!err.statusCode){

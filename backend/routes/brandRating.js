@@ -3,7 +3,7 @@ const express = require('express');
 const brandRatingController = require('../controllers/brandRating');
 
 const router = express.Router();
-const router1 = express.Router();
+
 
 router.get('/', brandRatingController.getAllBrandsRatings);
 
@@ -13,8 +13,8 @@ router.put('/', brandRatingController.putBrandRatings);
 
 router.delete('/:id', brandRatingController.deleteBrandRatings);
 
-router1.get('/', brandRatingController.sortBrandsRatings)
+router.get('/sort', brandRatingController.sortBrandsRatings)
 
 
 
-module.exports = router, router1;
+module.exports = router;
