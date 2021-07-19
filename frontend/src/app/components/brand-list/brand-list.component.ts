@@ -17,6 +17,7 @@ import {tap} from 'rxjs/operators';
 })
 export class BrandListComponent implements OnInit {
 
+  
   brands$!: Observable<Brand[]>
   brandsRatings$!: Observable<BrandRating[]>
 
@@ -70,43 +71,45 @@ export class BrandListComponent implements OnInit {
     return this.brandListCrudService.fetchAllRatings();
 }
 
-postRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
+  postRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
 
-  
-  const name = (<string>brandRatingName).trim();
-  const country = (<string>brandRatingCountry).trim();
-  const rating = (<number>brandRatingRating);
-  if(!name) return;
-  //console.log(name);
-  //console.log(description);
-  this.brandsRatings$ = this.brandListCrudService
-  .postRating({  name, country, rating})
-  .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
-}
-
-updateRatings(id:number, brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
-
-  const name = (<string>brandRatingName).trim();
-  const country = (<string>brandRatingCountry).trim();
-  const rating = (<number>brandRatingRating);
-  if(!name) return;
-
-  const newBrandRating: BrandRating = {
-    id,
-    name,
-    country,
-    rating
+    
+    const name = (<string>brandRatingName).trim();
+    const country = (<string>brandRatingCountry).trim();
+    const rating = (<number>brandRatingRating);
+    if(!name) return;
+    //console.log(name);
+    //console.log(description);
+    this.brandsRatings$ = this.brandListCrudService
+    .postRating({  name, country, rating})
+    .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
   }
-  this.brandsRatings$ = this.brandListCrudService
-    .updateRating(newBrandRating)
-    .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
-}
 
-deleteRatings(id: number): void{
+  updateRatings(id:number, brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
 
-  this.brandsRatings$ = this.brandListCrudService
-    .deleteRating(id)
-    .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
-}
-  
+    const name = (<string>brandRatingName).trim();
+    const country = (<string>brandRatingCountry).trim();
+    const rating = (<number>brandRatingRating);
+    if(!name) return;
+
+    const newBrandRating: BrandRating = {
+      id,
+      name,
+      country,
+      rating
+    }
+    this.brandsRatings$ = this.brandListCrudService
+      .updateRating(newBrandRating)
+      .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
+  }
+
+  deleteRatings(id: number): void{
+
+    this.brandsRatings$ = this.brandListCrudService
+      .deleteRating(id)
+      .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
+  }
+
+  BRANDNAME!: string;
+  COUNTRYCODE!: string;
 }
