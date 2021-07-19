@@ -9,17 +9,24 @@ import { BrandRating } from 'src/app/models/BrandRating';
 
 import {tap} from 'rxjs/operators';
 
+import { Pipe, PipeTransform } from '@angular/core';
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-brand-list',
   templateUrl: './brand-list.component.html',
   styleUrls: ['./brand-list.component.scss']
 })
+
+
+
 export class BrandListComponent implements OnInit {
 
   
   brands$!: Observable<Brand[]>
   brandsRatings$!: Observable<BrandRating[]>
+  
 
   constructor(private brandListCrudService: BrandListCrudService) { }
 
@@ -69,7 +76,7 @@ export class BrandListComponent implements OnInit {
 
   fetchAllRatings(): Observable <BrandRating[]>{
     return this.brandListCrudService.fetchAllRatings();
-}
+  }
 
   postRatings(brandRatingName: ThisType<BrandRating>, brandRatingCountry: ThisType<BrandRating>, brandRatingRating: ThisType<BrandRating>): void{
 
@@ -110,6 +117,16 @@ export class BrandListComponent implements OnInit {
       .pipe(tap((_) => (this.brandsRatings$ = this.fetchAllRatings())));
   }
 
+  sortAllRatings(country: string): Observable <BrandRating[]>{
+
+    return this.brandListCrudService.sortRatings(country);
+  }
+
   BRANDNAME!: string;
   COUNTRYCODE!: string;
+
+  
+
+  
+
 }

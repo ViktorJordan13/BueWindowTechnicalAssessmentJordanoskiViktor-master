@@ -17,6 +17,7 @@ export class BrandListCrudService {
 
   private url = "http://localhost:3000/brands";
   private urlRating = "http://localhost:3000/brandsRatings";
+  private urlS = `http://localhost:3000/brandsRatings/sort`;
 
   httpOptions: { headers: HttpHeaders } = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
@@ -93,6 +94,19 @@ export class BrandListCrudService {
 
   }
 
+  sortRatings(country: string): Observable <BrandRating[]> {
+
+
+    return this.http
+      .get<BrandRating[]>(this.urlS, { responseType: "json"})
+      .pipe(
+        tap((_) => console.log('fetched sorted brandsRatings')),
+        catchError(
+            this.errorHandlerService.handleError<BrandRating[]>("sort", [])
+        )
+      );
+
+  }
   
 
 }
