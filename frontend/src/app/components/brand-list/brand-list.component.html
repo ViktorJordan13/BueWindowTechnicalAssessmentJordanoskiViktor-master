@@ -150,7 +150,7 @@
   <mat-form-field style="width: 100%;" >
     <mat-label>Brand Ratings by country:</mat-label>
     <mat-select [(ngModel)] = "COUNTRYCODE" >
-      <mat-option  *ngFor="let brandRating of brandsRatings$ | async" [value] = brandRating.country >
+      <mat-option  *ngFor="let brandRating of brandsRatings$ | async" [value] = brandRating.country  >
         {{brandRating.country}}
       </mat-option>
     </mat-select>
@@ -159,12 +159,12 @@
   <mat-list >
     <mat-list-item  *ngFor="let brandRating of brandsRatings$  | async" >
       <span style="font-weight: bold;" *ngIf="(brandRating.country == COUNTRYCODE )"
-        >Brand: {{brandRating.name}}, Rating: {{brandRating.rating}}  
-        
-      </span>
-      
+        >Brand: {{brandRating.name}}, Rating: {{brandRating.rating}}       
+      </span>   
     </mat-list-item>
   </mat-list>
   
+  
+
   
 </mat-card>

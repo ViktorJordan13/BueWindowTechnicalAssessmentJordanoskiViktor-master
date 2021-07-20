@@ -9,9 +9,6 @@ import { BrandRating } from 'src/app/models/BrandRating';
 
 import {tap} from 'rxjs/operators';
 
-import { Pipe, PipeTransform } from '@angular/core';
-import * as _ from 'lodash';
-
 
 @Component({
   selector: 'app-brand-list',
@@ -26,6 +23,7 @@ export class BrandListComponent implements OnInit {
   
   brands$!: Observable<Brand[]>
   brandsRatings$!: Observable<BrandRating[]>
+  brandsRatingsSorted$!: Observable<BrandRating[]>
   
 
   constructor(private brandListCrudService: BrandListCrudService) { }
@@ -33,6 +31,7 @@ export class BrandListComponent implements OnInit {
   ngOnInit(): void {
     this.brands$ = this.fetchAll();
     this.brandsRatings$ = this.fetchAllRatings();
+    this.brandsRatingsSorted$ = this.sortAllRatings(this.COUNTRYCODE);
   }
 
   fetchAll(): Observable <Brand[]>{
@@ -126,7 +125,7 @@ export class BrandListComponent implements OnInit {
   COUNTRYCODE!: string;
 
   
-
+  
   
 
 }

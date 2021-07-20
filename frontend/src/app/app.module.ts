@@ -16,9 +16,11 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { BrandListComponent } from './components/brand-list/brand-list.component';
 
+import { UniquePipe } from "./unique.pipe";
+import {NgPipesModule} from 'ngx-pipes'
 
 @NgModule({
-  declarations: [AppComponent, BrandListComponent],
+  declarations: [AppComponent, BrandListComponent, UniquePipe],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -31,7 +33,9 @@ import { BrandListComponent } from './components/brand-list/brand-list.component
     MatToolbarModule,
     MatSelectModule,
     FormsModule,
+    NgPipesModule
   ],
+  exports:[UniquePipe],
   providers: [],
   bootstrap: [AppComponent],
 })
