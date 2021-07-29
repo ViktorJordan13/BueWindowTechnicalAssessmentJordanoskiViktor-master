@@ -9,6 +9,8 @@ import { BrandRating } from 'src/app/models/BrandRating';
 
 import {tap} from 'rxjs/operators';
 
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-brand-list',

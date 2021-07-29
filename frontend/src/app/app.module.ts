@@ -17,10 +17,14 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { BrandListComponent } from './components/brand-list/brand-list.component';
 
 import { UniquePipe } from "./unique.pipe";
-import {NgPipesModule} from 'ngx-pipes'
+import {NgPipesModule} from 'ngx-pipes';
+import { SortComponent } from './components/sort/sort.component'
+
+import { AppRoutingModule } from "./app-routing.module";
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
-  declarations: [AppComponent, BrandListComponent, UniquePipe],
+  declarations: [AppComponent, BrandListComponent, UniquePipe, SortComponent, NavigationComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -33,7 +37,8 @@ import {NgPipesModule} from 'ngx-pipes'
     MatToolbarModule,
     MatSelectModule,
     FormsModule,
-    NgPipesModule
+    NgPipesModule,
+    AppRoutingModule
   ],
   exports:[UniquePipe],
   providers: [],
